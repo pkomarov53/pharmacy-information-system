@@ -31,12 +31,12 @@
           <td class="d-none d-md-table-cell">{{ drug.dosage }}</td>
           <td class="d-none d-md-table-cell">{{ drug.package }}</td>
           <td>
-            <div class="d-flex flex-wrap">
-              <a href="{{ url_for('edit', id=drug.id) }}" class="btn btn-sm btn-secondary mr-1">Редактировать</a>
+            <div class="d-flex flex-wrap container-fluid justify-content-between">
+              <a href="{{ url_for('edit', id=drug.id) }}" class="btn btn-sm btn-secondary px-3">Редактировать</a>
               <form action="{{ url_for('delete', id=drug.id) }}" method="post" style="display:inline;">
-                <button type="submit" class="btn btn-sm btn-danger mr-1">Удалить</button>
+                <button type="submit" class="btn btn-sm btn-danger px-3">Удалить</button>
               </form>
-              <button type="submit" class="btn btn-sm btn-outline-info px-3">?</button>
+              <button type="submit" class="btn btn-sm btn-outline-info d-md-none px-4">Информация</button>
             </div>
           </td>
         </tr>

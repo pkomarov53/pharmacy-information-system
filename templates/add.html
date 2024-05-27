@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Добавить лекарство{% endblock %}
+
+{% block header %}Добавить новое лекарство{% endblock %}
+
+{% block content %}
+<div class="card my-4 shadow">
+  <div class="card-body">
+    <form method="post">
+      <div class="form-group">
+        <label for="name">Название</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="form">Форма</label>
+        <input type="text" class="form-control" id="form" name="form" required>
+      </div>
+      <div class="form-group">
+        <label for="dosage">Дозировка</label>
+        <input type="text" class="form-control" id="dosage" name="dosage" required>
+      </div>
+      <div class="form-group">
+        <label for="package">Упаковка</label>
+        <input type="text" class="form-control" id="package" name="package" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Добавить лекарство</button>
+      <a href="{{ url_for('index') }}" class="btn btn-secondary">Отмена</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

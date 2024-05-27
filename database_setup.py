@@ -6,12 +6,22 @@ def initialize_db():
     c = conn.cursor()
 
     c.execute('''
+              CREATE TABLE IF NOT EXISTS pharmacies (
+              id INTEGER PRIMARY KEY,
+              name TEXT NOT NULL,
+              address TEXT NOT NULL,
+              phone TEXT NOT NULL)
+              ''')
+
+    c.execute('''
               CREATE TABLE IF NOT EXISTS drugs (
               id INTEGER PRIMARY KEY,
+              pharmacy_id INTEGER NOT NULL,
               name TEXT NOT NULL,
               form TEXT NOT NULL,
               dosage TEXT NOT NULL,
-              package TEXT NOT NULL)
+              package TEXT NOT NULL,
+              FOREIGN KEY (pharmacy_id) REFERENCES pharmacies (id))
               ''')
 
     c.execute('''

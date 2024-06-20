@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<h1 class="my-4 text-center">Регистрация в системе</h1>
+    <div class="container">
+        <form method="post">
+        <div class=" form-group mb-0">
+            <label for="username">Имя пользователя:</label>
+            <small class="form-text text-muted">Введите имя пользователя для дальнейшей авторизации в системе.</small>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="password">Пароль:</label>
+            <small class="form-text text-muted">Введите пароль для дальнейшей авторизации в системе.</small>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Секретный код:</label>
+            <small class="form-text text-muted">Этот код сообщается пользователю куратором.</small>
+            <input type="password" class="form-control" id="secret" name="used_secret" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Регистрация</button>
+        <a href="{{ url_for('index') }}" class="btn btn-danger">Вернуться на главную</a>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+<h1 class="my-4 text-center">Авторизация в системе</h1>
+    <div class="container">
+        <form method="post">
+        <div class=" form-group mb-0">
+            <label for="username">Имя пользователя:</label>
+            <small class="form-text text-muted">Введите имя пользователя, указанное при регистрации в системе.</small>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="password">Пароль:</label>
+            <small class="form-text text-muted">Введите пароль, указанный при регистрации в системе.</small>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Авторизоваться</button>
+        <a href="{{ url_for('register') }}" class="btn btn-info">Зарегистрироваться</a>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

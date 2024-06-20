@@ -1,23 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}Выберите аптеку{% endblock %}
+{% block title %}Выбор аптеки{% endblock %}
 
 {% block header %}Выберите аптеку{% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="list-group">
-        {% for pharmacy in pharmacies %}
-        <a href="{{ url_for('select_pharmacy', pharmacy_id=pharmacy.id) }}" class="list-group-item list-group-item-action pharmacy-item">
-          <h5 class="mb-1">{{ pharmacy.name }}</h5>
-          <p class="mb-1">{{ pharmacy.address }}</p>
-          <small>{{ pharmacy.phone }}</small>
-        </a>
-        {% endfor %}
+<h1 class="my-4 text-center">Справочная система лекарственных средств</h1>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="list-group">
+          {% for pharmacy in pharmacies %}
+            <a href="{{ url_for('select_pharmacy', pharmacy_id=pharmacy.id) }}" class="list-group-item list-group-item-action pharmacy-item border border-dark mb-2">
+              <h5 class="mb-1">{{ pharmacy.name }}</h5>
+              <p class="mb-1">{{ pharmacy.address }}</p>
+              <small>{{ pharmacy.phone }}</small>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-8 d-flex justify-content-center">
+        <a href="{{ url_for('view_logs') }}" class="btn btn-outline-info mr-3">Панель администрирования</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">Выйти из системы</a>
       </div>
     </div>
   </div>
-</div>
 {% endblock %}

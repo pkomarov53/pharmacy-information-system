@@ -5,6 +5,7 @@
 {% block header %}Редактировать лекарство{% endblock %}
 
 {% block content %}
+<h1 class="my-4 text-center">Редактирование информации о лекарстве</h1>
 <div class="card my-4">
   <div class="card-body">
     <form method="post">
@@ -24,8 +25,12 @@
         <label for="package">Упаковка</label>
         <input type="text" class="form-control" id="package" name="package" value="{{ drug.package }}" required>
       </div>
+      <div class="form-group">
+        <label for="additional_info">Дополнительная информация</label>
+        <textarea class="form-control" id="additional_info" name="additional_info" rows="3">{{ drug.additional_info }}</textarea>
+      </div>
       <button type="submit" class="btn btn-primary">Обновить лекарство</button>
-      <a href="{{ url_for('index') }}" class="btn btn-secondary">Отмена</a>
+      <a href="{{ url_for('drugs') }}" class="btn btn-secondary">Отмена</a>
     </form>
   </div>
 </div>

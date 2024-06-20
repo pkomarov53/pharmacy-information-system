@@ -19,7 +19,6 @@ body::before {
     background-position: center center;
     background-attachment: fixed;
     filter: blur(5px);
-    z-index: -1;
 }
 
 .container {
@@ -37,10 +36,9 @@ body::before {
     background-color: #ffffff;
     border: 1px solid #dddddd;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     padding: 15px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #000000;
 }
 
 .pharmacy-item:hover {
@@ -102,6 +100,21 @@ body::before {
     margin-bottom: 5px;
 }
 
+.modal-content {
+    border-radius: 8px;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .container {
@@ -124,3 +137,10 @@ body::before {
         font-size: 0.75rem;
     }
 }
+
+@media (min-width: 768px) {
+    .mobile-only {
+        display: none;
+    }
+}
+

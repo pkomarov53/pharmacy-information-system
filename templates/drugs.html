@@ -2,47 +2,64 @@
 
 {% block title %}Справочная система лекарственных средств{% endblock %}
 
-{% block header %}Справочная система лекарственных средств{% endblock %}
+
 
 {% block content %}
+<h1 class="my-4 text-center">Справочная система лекарственных средств</h1>
 
-<div class="container">
-  <div class="my-3 d-flex justify-content-between">
-    <a class="btn btn-primary px-3" href="{{ url_for('add') }}">Добавить новое лекарство</a>
-    <a class="btn btn-outline-danger" href="{{ url_for('index') }}">Вернуться к выбору аптек</a>
-  </div>
-
-  <div class="table-responsive">
-    <table class="table table-hover table-bordered table-sm round">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Название</th>
-          <th scope="col" class="d-none d-md-table-cell">Форма</th>
-          <th scope="col" class="d-none d-md-table-cell">Дозировка</th>
-          <th scope="col" class="d-none d-md-table-cell">Упаковка</th>
-          <th scope="col">Действия</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for drug in drugs %}
-        <tr>
-          <td>{{ drug.name }}</td>
-          <td class="d-none d-md-table-cell">{{ drug.form }}</td>
-          <td class="d-none d-md-table-cell">{{ drug.dosage }}</td>
-          <td class="d-none d-md-table-cell">{{ drug.package }}</td>
-          <td>
-            <div class="d-flex flex-wrap container-fluid justify-content-between">
-              <a href="{{ url_for('edit', id=drug.id) }}" class="btn btn-sm btn-secondary px-3">Редактировать</a>
-              <form action="{{ url_for('delete', id=drug.id) }}" method="post" style="display:inline;">
-                <button type="submit" class="btn btn-sm btn-danger px-3">Удалить</button>
-              </form>
-              <button type="submit" class="btn btn-sm btn-outline-info d-md-none px-4">Информация</button>
-            </div>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+    <div class="container">
+        <div class="my-3 d-flex justify-content-between">
+            <a class="btn btn-primary px-3" href="{{ url_for('add') }}">Добавить новое лекарство</a>
+            <a class="btn btn-outline-danger" href="{{ url_for('index') }}">Вернуться к выбору аптек</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-sm round">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Название</th>
+                        <th scope="col" class="d-none d-md-table-cell">Форма</th>
+                        <th scope="col" class="d-none d-md-table-cell">Дозировка</th>
+                        <th scope="col" class="d-none d-md-table-cell">Упаковка</th>
+                        <th scope="col">Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for drug in drugs %}
+                        <tr>
+                            <td>{{ drug.name }}</td>
+                            <td class="d-none d-md-table-cell">{{ drug.form }}</td>
+                            <td class="d-none d-md-table-cell">{{ drug.dosage }}</td>
+                            <td class="d-none d-md-table-cell">{{ drug.package }}</td>
+                            <td>
+                                <div class="d-flex flex-wrap justify-content-between">
+                                    <a href="{{ url_for('edit', id=drug.id) }}" class="btn btn-sm btn-secondary">Редактировать</a>
+                                    <form action="{{ url_for('delete', id=drug.id) }}" method="post" style="display:inline;">
+                                        <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                                    </form>
+                                    <button type="button" class="btn btn-sm btn-outline-info" onclick="toggleInfo({{ drug.id }})">Информация</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="info-{{ drug.id }}" style="display: none;">
+                            <td colspan="5">
+                                <div class="alert alert-info mb-0">
+                                    <strong>Дополнительная информация:</strong> {{ drug.additional_info }}
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function toggleInfo(id) {
+            var infoRow = document.getElementById('info-' + id);
+            if (infoRow.style.display === 'none') {
+                infoRow.style.display = 'table-row';
+            } else {
+                infoRow.style.display = 'none';
+            }
+        }
+    </script>
 {% endblock %}

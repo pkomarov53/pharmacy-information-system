@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Application Logs{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4 mb-3 text-center">Логи приложения</h1>
+    <div class="container">
+        <div class="list-group">
+            {% if logs %}
+                {% for log in logs %}
+                    <div class="list-group-item list-group-item-action">
+                        {% if 'ERROR' in log %}
+                            <span class="badge badge-danger">ERROR</span> {{ log }}
+                        {% elif 'WARNING' in log %}
+                            <span class="badge badge-warning">WARNING</span> {{ log }}
+                        {% else %}
+                            <span class="badge badge-info">INFO</span> {{ log }}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">Список логов пуст.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="header-links mt-3">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Выбор аптеки</a>
+        <a href="{{ url_for('admin_drugs') }}" class="btn btn-primary">Список всех лекарств</a>
+    </div>
+{% endblock %}
